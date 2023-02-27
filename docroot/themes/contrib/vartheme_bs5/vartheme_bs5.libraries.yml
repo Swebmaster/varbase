@@ -1,0 +1,116 @@
+framework:
+  version: VERSION
+  css:
+    theme:
+      dist/css/base/style.base.css: {}
+    layout:
+      dist/css/layout/edge2edge.layout.css: {}
+      dist/css/layout/equal-height.layout.css: {}
+      dist/css/layout/print.layout.css: { media: print }
+  js:
+    dist/js/script.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/popperjs
+    - vartheme_bs5/bootstrap-styles
+    - vartheme_bs5/bootstrap-scripts
+
+# Bootstrap 5
+bootstrap-styles:
+  css:
+    theme:
+      dist/css/base/bootstrap.base.css: {}
+
+bootstrap-scripts:
+  js:
+    js/bootstrap/bootstrap.min.js: {}
+    #
+    # Plugins can be included individually (using Bootstrap’s individual
+    # js/dist/*.js), or all at once using bootstrap.js or the minified
+    # bootstrap.min.js (don’t include both).
+    # ------------------------------------------------------------------------------
+    # Alerts for dismissing
+    # Buttons for toggling states and checkbox/radio functionality
+    # Carousel for all slide behaviors, controls, and indicators
+    # Collapse for toggling visibility of content
+    # Dropdowns for displaying and positioning (also requires Popper.js)
+    # Modals for displaying, positioning, and scroll behavior
+    # Navbar for extending our Collapse plugin to implement responsive behavior
+    # Tooltips and popovers for displaying and positioning (also requires Popper.js)
+    # Scrollspy for scroll behavior and navigation updates
+    # -------------------------------------------------------------------------------
+    # js/bootstrap/alert.js: {}
+    # js/bootstrap/base-component.js: {}
+    # js/bootstrap/button.js: {}
+    # js/bootstrap/carousel.js: {}
+    # js/bootstrap/collapse.js: {}
+    # js/bootstrap/dropdown.js: {}
+    # js/bootstrap/modal.js: {}
+    # js/bootstrap/offcanvas.js: {}
+    # js/bootstrap/popover.js: {}
+    # js/bootstrap/scrollspy.js: {}
+    # js/bootstrap/tab.js: {}
+    # js/bootstrap/tooltip.js: {}
+
+auth-icons:
+  css:
+    theme:
+      dist/css/theme/auth-icons.theme.css: {}
+
+# ---------------------------------------------------------
+# Components
+# ---------------------------------------------------------
+featured-card-ltr:
+  css:
+    theme:
+      dist/css/components/organisms/cards/featuredCard/featured-card.css: {}
+
+featured-card-rtl:
+  css:
+    theme:
+      dist/css/components/organisms/cards/featuredCard/featured-card-rtl.css: {}
+
+impressed-card-ltr:
+  css:
+    theme:
+      dist/css/components/organisms/cards/impressedCard/impressed-card.css: {}
+
+impressed-card-rtl:
+  css:
+    theme:
+      dist/css/components/organisms/cards/impressedCard/impressed-card-rtl.css: {}
+
+overlay-card-ltr:
+  css:
+    theme:
+      dist/css/components/organisms/cards/overlayCard/overlay-card.css: {}
+
+overlay-card-rtl:
+  css:
+    theme:
+      dist/css/components/organisms/cards/overlayCard/overlay-card-rtl.css: {}
+
+page-ltr:
+  css:
+    theme:
+      dist/css/components/pages/page/page.css: {}
+
+page-rtl:
+  css:
+    theme:
+      dist/css/components/pages/page/page-rtl.css: {}
+
+alert-ltr:
+  css:
+    theme:
+      dist/css/components/molecules/alert/alert.css: {}
+  js:
+    js/bootstrap/alert.js: {}
+
+alert-rtl:
+  css:
+    theme:
+      dist/css/components/molecules/alert/alert-rtl.css: {}
+  js:
+    js/bootstrap/alert.js: {}

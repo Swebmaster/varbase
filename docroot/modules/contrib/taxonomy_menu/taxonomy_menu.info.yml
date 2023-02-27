@@ -1,0 +1,6 @@
+name: Taxonomy Menu
+type: module
+description: Embed a taxonomy tree into a menu
+core_version_requirement: ^9.1 || ^10
+package: Menu
+configure: entity.taxonomy_menu.collection

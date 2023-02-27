@@ -1,0 +1,13 @@
+name: "Varbase Webform"
+description: "Provide webforms features and settings."
+type: module
+package: Varbase
+core_version_requirement: ^9 || ^10
+dependencies:
+  - webform:webform
+install:
+  - webform_bootstrap
+  - webform_templates
+  - webform_ui
+  - taxonomy
+  - webform_views

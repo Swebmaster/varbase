@@ -1,0 +1,9 @@
+name: "Varbase Email"
+type: module
+description: "Adds email template for varbase emails"
+package: Varbase
+core_version_requirement: ^9 || ^10
+dependencies: []
+install:
+  - symfony_mailer
+  - symfony_mailer_bc

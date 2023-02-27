@@ -1,0 +1,9 @@
+name: 'Configuration Update Reports'
+type: module
+description: 'Adds an updates report and revert functionality to configuration management.'
+core_version_requirement: ^9.4 || ^10
+php: 8.1
+configure: config_update_ui.report
+dependencies:
+  - config_update:config_update
+  - drupal:config

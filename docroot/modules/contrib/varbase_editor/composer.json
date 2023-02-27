@@ -1,0 +1,75 @@
+{
+  "name": "drupal/varbase_editor",
+  "description": "Editor profile and settings to be used in most websites.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/varbase_editor",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://www.drupal.org/vardot",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/varbase_editor",
+    "source": "http://cgit.drupalcode.org/varbase_editor"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "require": {
+    "composer/installers": "~2.0",
+    "oomphinc/composer-installers-extender": "~2.0",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~9.0 || ~10.0",
+    "vardot/module-installer-factory": "~1.0",
+    "drupal/pathologic": "2.0.x-dev",
+    "drupal/ckeditor_bidi": "~4.0",
+    "drupal/ace_editor": "~2.0",
+    "drupal/extlink": "~1.0",
+    "drupal/linkit": "6.0.x-dev",
+    "drupal/editor_advanced_link": "~2.0",
+    "drupal/anchor_link": "~1.0",
+    "drupal/token": "~1.0",
+    "drupal/token_filter": "~2.0"
+  },
+  "suggest": {
+    "npm-asset/ace-builds": "~1.0: Provides JavaScript library necessary for ACE code Editor"
+  },
+  "extra": {
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "installer-paths": {
+      "libraries/ace": ["npm-asset/ace-builds"],
+      "libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ]
+    },
+    "drupal-libraries": {
+      "libraries": [
+          {"name": "ace", "package": "npm-asset/ace-builds"}
+      ]
+    },
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patches": {
+      "drupal/linkit": {
+        "Issue #3232190: CKEditor 5 readiness":
+        "https://www.drupal.org/files/issues/2022-12-14/3232190-113.patch"
+      }
+    }
+  }
+}

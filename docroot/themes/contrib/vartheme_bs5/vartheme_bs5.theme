@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Theme functions to support Vartheme BS5 theme.
+ */
+
+use Drupal\Core\Language\LanguageInterface;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function vartheme_bs5_preprocess_html(&$variables) {
+  // The path for Vartheme BS5 theme in variables.
+  $variables['vartheme_bs5_path'] = \Drupal::request()->getBaseUrl() . '/' . \Drupal::service('extension.list.theme')->getPath('vartheme_bs5');
+
+  // Add class for logged in users
+  if (\Drupal::currentUser()->isAuthenticated()) {
+    $variables['attributes']['class'][] = 'user-logged-in';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function vartheme_bs5_preprocess_page(&$variables) {
+  // Add the pring logo.
+  $variables['logo_print'] = \Drupal::request()->getBaseUrl() . '/' . \Drupal::service('extension.list.theme')->getPath('vartheme_bs5') . '/logo-print.png';
+
+  // Add the site name and slogan.
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function vartheme_bs5_preprocess_page_title(&$variables) {
+
+  // Hide page title for the front page and let screen readers only see it.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['title_attributes']['class'][] = 'visually-hidden';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vartheme_bs5_form_alter(&$form, $form_state, $form_id) {
+
+  // Have a default style for moderation entity form.
+  if ($form_id == 'content_moderation_entity_moderation_form') {
+    $form['#attributes']['class'][] = 'card card-body bg-light';
+  }
+
+  // Have a default style for the moderation status in the layout editing node pages.
+  if ((preg_match('/^node_.*._layout_builder_form$/', $form_id)
+    && isset($form['moderation_state']))) {
+    $form['moderation_state']['#attributes']['class'][] = 'card card-body bg-light';
+  }
+}
+
+/**
+ * Implements hook_preprocess_login_with().
+ */
+function vartheme_bs5_preprocess_login_with(&$variables) {
+  foreach ($variables['social_networks'] as $social_network_index => $social_network) {
+    if (isset($social_network['img_path'])) {
+      $theme_path = Drupal::service('theme_handler')->getTheme('vartheme_bs5')->getPath();
+
+      $replaced_path_for_icons = str_replace('modules/contrib', 'social_auth', $social_network['img_path']);
+      $social_network_img_path_in_vartheme = $theme_path . '/images/' . $replaced_path_for_icons;
+
+      if (file_exists(DRUPAL_ROOT . '/' . $social_network_img_path_in_vartheme)) {
+        $variables['social_networks'][$social_network_index]['img_path'] = $social_network_img_path_in_vartheme;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function vartheme_bs5_preprocess_region(&$variables) {
+  $isFront = \Drupal::service('path.matcher')->isFrontPage();
+  if ($isFront && $variables["region"] === "header") {
+    $variables["is_front"] = $isFront;
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function vartheme_bs5_preprocess(&$variables, $hook, $info) {
+  $language = \Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_CONTENT);
+  $language_direction = $language->getDirection();
+  $variables['lang_dir'] = $language_direction;
+}

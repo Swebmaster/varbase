@@ -1,0 +1,37 @@
+{
+  "name": "drupal/vartheme_claro",
+  "description": "A modern administration theme for Varbase standard websites. Based on the Claro Drupal core admin theme.",
+  "type": "drupal-theme",
+  "homepage": "https://www.drupal.org/project/vartheme_claro",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://www.drupal.org/vardot",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/vartheme_claro",
+    "source": "http://cgit.drupalcode.org/vartheme_claro"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  },
+  "require": {
+    "composer/installers": "~2.0",
+    "oomphinc/composer-installers-extender": "~2.0",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~9.0 || ~10.0",
+    "drupal/gin": "~3.0",
+    "drupal/gin_login": "~2.0",
+    "drupal/gin_toolbar": "~1.0"
+  }, 
+  "enable-patching": true,
+  "composer-exit-on-patch-failure": true,
+  "patches": {  }
+}

@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * Default theme implementation for Symfony Email.
+ *
+ * Variables:
+ * - body: Email body content.
+ * - heading: The heading title of the email.
+ * - logo: Vartheme Email logo.
+ * - site_name: Site name.
+ * - site_slogan: Slogan of the site.
+ *
+ * @see template_preprocess_email()
+ *
+ * @ingroup themeable
+ */
+#}
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ heading }}</title>
+</head>
+<body class="">
+
+<table border="0" cellpadding="0" cellspacing="0" class="body">
+    <tr>
+        <td>&nbsp;</td>
+        <td class="container">
+            <div class="content">
+
+                <!-- START CENTERED WHITE CONTAINER -->
+                <span class="preheader"></span>
+
+                {% if logo %}
+                    <div class="header">
+                        <img src="{{ logo }}" alt="Logo" class="logo" />
+                    </div>
+                {% endif %}
+
+                <div class="postheader">
+                    {{ heading }}
+                </div>
+
+                <table class="main" style="width: 100%; border-radius: 3px; background: #fff; box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);">
+
+                    <!-- START MAIN CONTENT AREA -->
+                    <tr>
+                        <td class="wrapper">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td>
+                                        {{ body }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- END MAIN CONTENT AREA -->
+                </table>
+
+                <!-- START FOOTER -->
+                <div class="footer">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="content-block">
+                                <strong class="brand">
+                                    {% if site_link %}
+                                        <a href="{{ base_url }}">{{ site_name }}</a>
+                                    {% else %}
+                                        {{ site_name }}
+                                    {% endif %}
+                                </strong>
+                                {% if site_slogan %}
+                                    <br />
+                                    <span class="tagline">{{ site_slogan }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content-block powered-by">
+                                Copyright &copy;{{ "now"|date("Y") }}.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- END FOOTER -->
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+name: "Vartheme BS5"
+description: "Base theme for Varbase standard websites. Based on Bootstrap 5 framework using SASS."
+core_version_requirement: ^9 || ^10
+
+# These dependencies will not allow the installation of Vartheme BS5 at all if varbase_components is not activated.
+# As the Gin admin theme had issue with installation in profiles.
+# A bit harsh, so we'll continue to just rely on the composer requirement for now.
+# dependencies:
+#   - varbase_components:varbase_components
+
+engine: twig
+type: theme
+base theme: false
+screenshot: screenshot.png
+
+regions:
+  top_bar: Top bar
+  navbar_branding: Navbar branding
+  navigation: Navigation (Desktop and Collapse)
+  highlighted: Highlighted
+  content_above: Content above
+  primary_sidebar: Primary sidebar
+  content: Content
+  secondary_sidebar: Secondary sidebar
+  content_below: Content below
+  footer_top: Footer top
+  footer_bottom: Footer bottom
+
+libraries:
+  - vartheme_bs5/framework
+
+libraries-override:
+  social_auth/auth-icons: vartheme_bs5/auth-icons
+
+ckeditor_stylesheets:
+  - dist/css/base/bootstrap.base.css
+  - dist/css/base/style.base.css
+  - dist/css/layout/edge2edge.layout.css
+  - dist/css/layout/equal-height.layout.css
+  - dist/css/components/pages/page/page.css
+  - dist/css/components/molecules/alert/alert.css
+
+ckeditor5-stylesheets:
+  - dist/css/base/bootstrap.base.css
+  - dist/css/base/style.base.css
+  - dist/css/layout/edge2edge.layout.css
+  - dist/css/layout/equal-height.layout.css
+  - dist/css/components/pages/page/page.css
+  - dist/css/components/molecules/alert/alert.css
+
+components:
+  namespaces:
+    vartheme_bs5: src/components
+    atoms: src/components/atoms
+    molecules: src/components/molecules
+    organisms: src/components/organisms
+    templates: src/components/templates
+    pages: src/components/pages

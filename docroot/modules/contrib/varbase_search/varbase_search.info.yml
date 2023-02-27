@@ -1,0 +1,9 @@
+name: "Varbase Search"
+description: "Provides search configuration, and offering search capabilities."
+type: module
+package: Varbase
+core_version_requirement: ^9 || ^10
+dependencies: []
+install:
+  - search_api
+  - search_api_db
